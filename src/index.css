@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-gradient-to-b from-orange-50 via-rose-50/40 to-sky-50/40 bg-fixed font-sans text-ink antialiased; }
+  input, select, textarea { @apply outline-none; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-gradient-to-r from-brand-500 to-pink-500 text-white shadow-sm hover:brightness-110 hover:shadow-lift active:scale-95; }
+  .btn-outline { @apply btn border border-gray-200 bg-white text-ink hover:border-brand-400 hover:text-brand-600 active:scale-95; }
+  .btn-ghost { @apply btn text-gray-600 hover:bg-gray-100; }
+  .card { @apply rounded-2xl bg-white shadow-card; }
+  .input { @apply w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm transition focus:border-brand-400 focus:ring-4 focus:ring-brand-100; }
+  .input-error { @apply border-red-400 focus:border-red-400 focus:ring-red-100; }
+  .label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-gray-500; }
+  .chip { @apply inline-flex shrink-0 items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium transition hover:border-brand-300; }
+  .chip-active { @apply border-brand-500 bg-brand-500 text-white hover:border-brand-500; }
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.bg-animated { background-size: 200% 200%; }
+.text-gradient { @apply bg-gradient-to-r from-brand-500 via-pink-500 to-violet-500 bg-clip-text text-transparent; }
+.marquee:hover .animate-marquee, .marquee:hover .animate-marquee-slow { animation-play-state: paused; }
+.btn-shine { position: relative; overflow: hidden; }
+.btn-shine::after { content: ''; position: absolute; inset: 0; width: 40%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent); animation: shine 2.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
