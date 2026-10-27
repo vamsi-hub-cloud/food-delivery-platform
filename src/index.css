@@ -18,6 +18,9 @@
   .input { @apply w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm transition focus:border-brand-400 focus:ring-4 focus:ring-brand-100; }
   .input-error { @apply border-red-400 focus:border-red-400 focus:ring-red-100; }
   .label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-gray-500; }
+  .btn-danger { @apply btn bg-red-500 text-white hover:bg-red-600 active:scale-95; }
+  .btn-success { @apply btn bg-emerald-500 text-white hover:bg-emerald-600 active:scale-95; }
+  .btn-sm { @apply !px-3 !py-1.5 text-xs; }
   .chip { @apply inline-flex shrink-0 items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium transition hover:border-brand-300; }
   .chip-active { @apply border-brand-500 bg-brand-500 text-white hover:border-brand-500; }
 }

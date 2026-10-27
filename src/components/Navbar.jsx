@@ -7,6 +7,7 @@ const links = [
   { to: '/', label: 'Home' },
   { to: '/restaurants', label: 'Restaurants' },
   { to: '/orders', label: 'My Orders' },
+  { to: '/admin', label: '🔐 Admin' },
 ]
 
 export default function Navbar() {

@@ -65,6 +65,7 @@ export default function Footer() {
             <p className="mb-3 text-sm font-bold text-white">Company</p>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>About us</li><li>Careers</li><li>Partner with us</li><li>Terms & Privacy</li>
+              <li><Link to="/admin" className="font-semibold text-brand-300 hover:text-brand-400">🔐 Admin Panel</Link></li>
             </ul>
           </div>
           <div>

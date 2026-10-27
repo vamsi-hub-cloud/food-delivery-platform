@@ -24,6 +24,35 @@ A modern, responsive food delivery frontend built with **React + Vite**, **Tailw
 - **More colour & motion** – gradient themes per cuisine/restaurant, scroll-reveal, floating emojis, confetti on order success, animated gradients (respects `prefers-reduced-motion`)
 - Nutrition, ratings, reviews and branches are **mock data** generated for the demo (`src/data/enrich.js`, `src/data/content.js`)
 
+## 🔐 Admin Flow (v3)
+Open **`/admin`** (also linked from the footer). Demo logins:
+
+| Role | Email | Password |
+|---|---|---|
+| Super Admin | admin@foodigo.com | admin123 |
+| Operations Manager | ops@foodigo.com | ops123 |
+| Finance Manager | finance@foodigo.com | finance123 |
+
+The sidebar and routes adapt to each role's permissions (managed in *Roles & Permissions*).
+
+| # | Module | Routes | What it covers |
+|---|---|---|---|
+| 1 | Dashboard & Analytics | `/admin`, `/admin/analytics` | KPIs (orders, revenue, active users, earnings), revenue trend, status donut, peak-hour chart + heatmap, recent activities, category / dish / zone performance |
+| 2 | Order Management | `/admin/orders`, `/admin/orders/:id` | All / pending / confirmed / active deliveries / delivered / cancelled / refund-request tabs, accept & reject, status tracking timeline, partner assignment, cancel with refund, refund creation |
+| 3 | Restaurant & Menu | `/admin/restaurants`, `/admin/restaurants/:id` | Listing, registration form (FSSAI/GST/PAN validation), approval & document verification, menu CRUD, categories, pricing, availability, operating hours, ratings & review moderation, commission |
+| 4 | Delivery Partners | `/admin/partners`, `/admin/partners/:id` | Registration, KYC document verification, online/offline, manual + auto order assignment, live tracking cards, delivery history, earnings, performance, payouts |
+| 5 | Customers | `/admin/customers`, `/admin/customers/:id` | Listing, profile & contact edit, order history, addresses, refunds, reviews, complaints, suspend / block / reactivate |
+| 6 | Payments & Finance | `/admin/payments?tab=` | Overview, transactions, failed payments, restaurant settlements, partner payouts, commissions, refunds, GST taxes, CSV financial reports |
+| 7 | Offers & Promotions | `/admin/offers?tab=` | Coupon CRUD (limits, min order, expiry), discount campaigns, referral program, campaign analytics |
+| 8 | Support, Reports & Settings | `/admin/support`, `notifications`, `reports`, `zones`, `pricing`, `roles`, `settings`, `audit` | Tickets & disputes, broadcast notifications, report builder + CSV, delivery zones, pricing & surge rules, roles/permissions/admin users, platform settings, audit logs |
+
+**How it works**
+- All admin data is mocked locally (`src/admin/data/seed.js`) and persisted in LocalStorage (`foodigo_admin_v1`). Use *Platform Settings → Reset demo data* to restore it.
+- **Orders placed on the customer site appear in the admin Orders list live** (flagged `NEW`) and can be accepted, assigned, cancelled or refunded.
+- Every admin action is written to the **Audit Log** automatically.
+- The admin bundle is lazy-loaded, so the customer site stays light.
+- Charts are lightweight custom SVG components (no chart library).
+
 ## Getting started
 ```bash
 npm install
@@ -35,6 +64,7 @@ npm run preview
 ## Folder structure
 ```
 src/
+├── admin/        # Admin flow: AdminApp, context, data seed, components (ui kit, charts, tables), pages
 ├── components/   # reusable UI (Navbar, RestaurantCard, FoodCard, CustomizeModal, CouponBox, OrderTimeline…)
 ├── context/      # CartContext, OrderContext, ToastContext
 ├── data/         # restaurants + menus, coupons, customisation options

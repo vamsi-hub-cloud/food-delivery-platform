@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { Suspense, lazy, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -15,12 +15,24 @@ import OrderTracking from './pages/OrderTracking'
 import OrderHistory from './pages/OrderHistory'
 import NotFound from './pages/NotFound'
 
+const AdminApp = lazy(() => import('./admin/AdminApp'))
+
 export default function App() {
   const location = useLocation()
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
   }, [location.pathname])
+
+  if (location.pathname.startsWith('/admin')) {
+    return (
+      <Suspense fallback={<div className="grid min-h-screen place-items-center text-4xl"><span className="animate-wiggle">🍔</span></div>}>
+        <Routes>
+          <Route path="/admin/*" element={<AdminApp />} />
+        </Routes>
+      </Suspense>
+    )
+  }
 
   return (
     <div className="relative flex min-h-screen flex-col">
